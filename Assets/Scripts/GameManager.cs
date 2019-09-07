@@ -1,20 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public int numEnemies = 2;
 
-    private Text textHealth;
-    private List<GameObject> listEnemies = new List<GameObject>();
+    public Canvas dieCanvas;
 
     public Text textDebugger;
     public static string textDebug;
 
+    private Text textHealth;
+    private List<GameObject> listEnemies = new List<GameObject>();
+    
     void Awake()
     {
+        EventManager.StartListening("PlayerDead", OnPlayerDead);
+
+        if (dieCanvas != null)
+        {
+            dieCanvas.enabled = false;
+        }
+
         initEnemies();
 
         textHealth = GameObject.Find("TextHealth").GetComponent<Text>();
@@ -22,6 +31,7 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
 
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -78,6 +88,20 @@ public class GameManager : MonoBehaviour
     {
         listEnemies.Remove(enemy);
         Destroy(enemy, 0);
+    }
+
+    private void OnPlayerDead()
+    {
+        if (dieCanvas != null)
+        {
+            dieCanvas.enabled = true;
+        }
+        Invoke("RestartScene", 5);
+    }
+
+    private void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 }

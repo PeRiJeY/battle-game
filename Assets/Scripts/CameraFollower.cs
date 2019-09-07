@@ -21,8 +21,6 @@ public class CameraFollower : MonoBehaviour
     {
         if (target == null)
         {
-            Debug.LogWarning("Missing target ref !", this);
-
             return;
         }
 

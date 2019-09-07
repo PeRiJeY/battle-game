@@ -92,6 +92,11 @@ public class HurtBox : Box {
         if (health == 0)
         {
             explode();
+
+            if (gameObject.tag == "Player")
+            {
+                EventManager.TriggerEvent("PlayerDead");
+            }
         }
         
     }
