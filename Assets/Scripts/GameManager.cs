@@ -33,7 +33,8 @@ public class GameManager : MonoBehaviour
     {
         GameState gameState = GameState.getSingleton();
 
-        textHealth.text = "Health: " + gameState.playerHealth;
+        textHealth.text = "Health: " + gameState.playerHealth + 
+            "\nEnemies: " + listEnemies.Count;
         if (textDebugger != null)
         {
             textDebugger.text = textDebug;
@@ -75,7 +76,7 @@ public class GameManager : MonoBehaviour
 
     public void destroyEnemy(GameObject enemy)
     {
-        listEnemies.Add(enemy);
+        listEnemies.Remove(enemy);
         Destroy(enemy, 0);
     }
 

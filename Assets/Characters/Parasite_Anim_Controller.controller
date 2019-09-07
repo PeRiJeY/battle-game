@@ -46,18 +46,6 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!114 &114213479008662822
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c38e5da6b56d48f4689cb082627d748a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!206 &206275471735539258
 BlendTree:
   m_ObjectHideFlags: 1
@@ -144,7 +132,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 6
     m_ConditionEvent: State
-    m_EventTreshold: 2
+    m_EventTreshold: 3
   - m_ConditionMode: 6
     m_ConditionEvent: PunchType
     m_EventTreshold: 5
@@ -172,7 +160,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 6
     m_ConditionEvent: State
-    m_EventTreshold: 2
+    m_EventTreshold: 3
   - m_ConditionMode: 6
     m_ConditionEvent: PunchType
     m_EventTreshold: 6
@@ -686,8 +674,7 @@ AnimatorState:
   - {fileID: 1101283005266020922}
   - {fileID: 1101138232636087846}
   - {fileID: 1101192256004579372}
-  m_StateMachineBehaviours:
-  - {fileID: 114213479008662822}
+  m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

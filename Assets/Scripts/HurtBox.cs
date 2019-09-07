@@ -75,7 +75,7 @@ public class HurtBox : Box {
     {
         if (gameObject.tag == "Player")
         {
-            health = Mathf.Max(0, (int)(health - collisionMagnitude * 0.5f));
+            health = Mathf.Max(0, (int)(health - collisionMagnitude * 0.2f));
 
             GameState.getSingleton().playerHealth = health;
         } else

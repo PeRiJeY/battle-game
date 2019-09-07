@@ -190,10 +190,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 785478444}
-  offsetPosition: {x: 1, y: 1.4, z: -3}
+  offsetPosition: {x: 0, y: 1.4, z: -3}
   lookAt: 0
   moveSpeed: 0.08
-  rotationSpeed: 0.1
+  rotationSpeed: 0.2
 --- !u!4 &140876839
 Transform:
   m_ObjectHideFlags: 0
@@ -256,7 +256,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -804,7 +804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82d0a6a32aa7df4b9f4c733bb1bb1df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numEnemies: 10
+  numEnemies: 2
   textDebugger: {fileID: 2043046358}
 --- !u!4 &585519158
 Transform:
@@ -848,13 +848,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 698901507}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &698901511
 MonoBehaviour:
@@ -899,7 +899,7 @@ CapsuleCollider:
   m_Radius: 10
   m_Height: 90
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 11.22, z: 0}
 --- !u!54 &742520227
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -908,13 +908,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 742520223}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!1 &785376513
 GameObject:
@@ -5690,8 +5690,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2baab6d84f6ceb844960958cd996510b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  turnSpeed: 100
+  moveSpeed: 8
+  turnSpeed: 80
 --- !u!4 &785478444 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400082, guid: bdde801e2640fe442a53e272b6d940f6,
@@ -6686,7 +6686,7 @@ CapsuleCollider:
   m_Radius: 10
   m_Height: 90
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 16.51, z: 0}
 --- !u!54 &1954656063
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6695,13 +6695,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1954656059}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!1 &1969943790 stripped
 GameObject:
@@ -6731,13 +6731,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1969943790}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &1969943794
 MonoBehaviour:

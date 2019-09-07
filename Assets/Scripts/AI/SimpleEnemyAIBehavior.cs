@@ -246,7 +246,14 @@ public class SimpleEnemyAIBehavior : MonoBehaviour
 
         if (distance < 2.0f && angle < visualAngle && now - timeLastPunch >= 1.0f)
         { 
-            updateAnimationManager(AnimationCharacterManager.CharacterStateEnum.Punching, 0.5f);
+            if (Random.Range(0, 1) < 0.8) // 80% of time do Punch and 20% are Kick
+            {
+                updateAnimationManager(AnimationCharacterManager.CharacterStateEnum.Punching, 0.5f);
+            } else
+            {
+                updateAnimationManager(AnimationCharacterManager.CharacterStateEnum.Kicking, 0.5f);
+            }
+            
 
             timeLastPunch = now;
         }

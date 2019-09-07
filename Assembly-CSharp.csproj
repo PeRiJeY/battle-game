@@ -62,7 +62,6 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AI\SimpleEnemyAIBehavior.cs" />
     <Compile Include="Assets\Scripts\Animations\AnimationCharacterManager.cs" />
-    <Compile Include="Assets\Scripts\AnimatorPunchManage.cs" />
     <Compile Include="Assets\Scripts\Box.cs" />
     <Compile Include="Assets\Scripts\CameraFollower.cs" />
     <Compile Include="Assets\Scripts\CharacterUIManager.cs" />

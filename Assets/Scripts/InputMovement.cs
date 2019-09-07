@@ -48,6 +48,9 @@ public class InputMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.E))
         {
             animatorManager.characterState = AnimationCharacterManager.CharacterStateEnum.Punching;
+        } else if (Input.GetKey(KeyCode.Mouse1) || Input.GetKey(KeyCode.Q))
+        {
+            animatorManager.characterState = AnimationCharacterManager.CharacterStateEnum.Kicking;
         }
         updateColliderStatus();
 
@@ -61,41 +64,49 @@ public class InputMovement : MonoBehaviour
             inMovement = true;
         }
 
+        // Stop movement when is punching
+        if (animatorManager.characterState == AnimationCharacterManager.CharacterStateEnum.Punching ||
+                animatorManager.characterState == AnimationCharacterManager.CharacterStateEnum.Kicking ||
+                (previousPlayerState != animatorManager.characterState && (Time.realtimeSinceStartup - timeLastChange) < 0.7))
+        {
+            animatorManager.animationSpeed = 0;
+        } else
+        {
+            if (inMovement && isCtrlPressed)
+            {
+                updateRelativeSpeed(1.0f);
+
+            }
+            else if (inMovement && !isCtrlPressed)
+            {
+                updateRelativeSpeed(0.5f);
+            }
+            else
+            {
+                updateRelativeSpeed(0.0f);
+
+            }
+
+            transform.Rotate(Vector3.up, turnSpeed * 0.5f * mouseAxisX * relativeSpeed * Time.deltaTime);
+            Vector3 forwardVector = transform.TransformDirection(Vector3.forward);
+            Vector3 rightVector = transform.TransformDirection(Vector3.right);
+            characterController.SimpleMove(forwardVector * verticalAxis * moveSpeed * relativeSpeed);
+            characterController.SimpleMove(rightVector * horizontalAxis * moveSpeed * relativeSpeed);
+
+            // skinnerTrail.speedToWidth = Mathf.Max(0, skinnerTrailOriginalSpeed * relativeSpeed);
+            animatorManager.animationSpeed = relativeSpeed;
+        }
         
-        if (inMovement && isCtrlPressed)
-        {
-            updateRelativeSpeed(1.0f);
-            
-        }
-        else if (inMovement && !isCtrlPressed)
-        {
-            updateRelativeSpeed(0.5f);
-        }
-        else
-        {
-            updateRelativeSpeed(0.0f);
-            
-        }
-
-        transform.Rotate(Vector3.up, turnSpeed * 0.5f * mouseAxisX * relativeSpeed * Time.deltaTime);
-
-        Vector3 forwardVector = transform.TransformDirection(Vector3.forward);
-        Vector3 rightVector = transform.TransformDirection(Vector3.right);
-        characterController.SimpleMove(forwardVector * verticalAxis * moveSpeed * relativeSpeed);
-        characterController.SimpleMove(rightVector * horizontalAxis * moveSpeed * relativeSpeed);
-
-        // skinnerTrail.speedToWidth = Mathf.Max(0, skinnerTrailOriginalSpeed * relativeSpeed);
-        animatorManager.animationSpeed = relativeSpeed;
     }
 
     private void updateRelativeSpeed(float target)
     {
         if (relativeSpeed < target)
         {
-            relativeSpeed += (0.5f * Time.deltaTime);
+            relativeSpeed += (1.0f * Time.deltaTime);
         } else if (relativeSpeed > target)
         {
-            relativeSpeed -= (0.5f * Time.deltaTime);
+            relativeSpeed -= (2.0f * Time.deltaTime);
         }
     }
 
@@ -104,7 +115,8 @@ public class InputMovement : MonoBehaviour
         float actualTime = Time.realtimeSinceStartup;
         if (previousPlayerState != animatorManager.characterState && (actualTime - timeLastChange) > 0.5)
         {
-            if (animatorManager.characterState == AnimationCharacterManager.CharacterStateEnum.Punching)
+            if (animatorManager.characterState == AnimationCharacterManager.CharacterStateEnum.Punching ||
+                animatorManager.characterState == AnimationCharacterManager.CharacterStateEnum.Kicking)
             {
                 updateHitCollisions(gameObject, true);
             }
