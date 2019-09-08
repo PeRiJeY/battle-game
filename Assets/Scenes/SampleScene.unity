@@ -804,7 +804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82d0a6a32aa7df4b9f4c733bb1bb1df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numEnemies: 2
+  numEnemies: 10
   dieCanvas: {fileID: 1869539730}
   textDebugger: {fileID: 2043046358}
 --- !u!4 &585519158
