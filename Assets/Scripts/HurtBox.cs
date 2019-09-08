@@ -49,7 +49,7 @@ public class HurtBox : Box {
         }
 
         // Avoid multiple collisions
-        if (timeLastHurt + 0.2f > Time.realtimeSinceStartup)
+        if (Time.realtimeSinceStartup - timeLastHurt < 0.4f)
         {
             return;
         }
