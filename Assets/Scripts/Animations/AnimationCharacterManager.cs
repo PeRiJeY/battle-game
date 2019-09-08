@@ -26,6 +26,7 @@ public class AnimationCharacterManager : MonoBehaviour
 
     public CharacterStateEnum characterState { get; set; } = CharacterStateEnum.Normal;
     public float animationSpeed { get; set; } = 0.0f;
+    public float horizontalAxis { get; set; } = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +52,12 @@ public class AnimationCharacterManager : MonoBehaviour
 
         animator.SetInteger("State", (int)characterState);
         animator.SetFloat("Speed", animationSpeed);
+        animator.SetFloat("HorizontalAxis", horizontalAxis);
 
+    }
+
+    public bool IsPunching()
+    {
+        return animator.GetCurrentAnimatorStateInfo(0).IsTag("Punch");
     }
 }

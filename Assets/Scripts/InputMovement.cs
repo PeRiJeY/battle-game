@@ -65,11 +65,10 @@ public class InputMovement : MonoBehaviour
         }
 
         // Stop movement when is punching
-        if (animatorManager.characterState == AnimationCharacterManager.CharacterStateEnum.Punching ||
-                animatorManager.characterState == AnimationCharacterManager.CharacterStateEnum.Kicking ||
-                (previousPlayerState != animatorManager.characterState && (Time.realtimeSinceStartup - timeLastChange) < 0.7))
+        if (animatorManager.IsPunching())
         {
-            animatorManager.animationSpeed = 0;
+            // animatorManager.animationSpeed = 0;
+            updateRelativeSpeed(0.0f);
         } else
         {
             if (inMovement && isCtrlPressed)
@@ -95,25 +94,20 @@ public class InputMovement : MonoBehaviour
 
             // skinnerTrail.speedToWidth = Mathf.Max(0, skinnerTrailOriginalSpeed * relativeSpeed);
             animatorManager.animationSpeed = relativeSpeed;
+            animatorManager.horizontalAxis = Mathf.Lerp(horizontalAxis, animatorManager.horizontalAxis, 0.95f);
         }
         
     }
 
     private void updateRelativeSpeed(float target)
     {
-        if (relativeSpeed < target)
-        {
-            relativeSpeed += (1.0f * Time.deltaTime);
-        } else if (relativeSpeed > target)
-        {
-            relativeSpeed -= (2.0f * Time.deltaTime);
-        }
+        relativeSpeed = Mathf.Lerp(target, relativeSpeed, 0.95f);
     }
 
     private void updateColliderStatus()
     {
         float actualTime = Time.realtimeSinceStartup;
-        if (previousPlayerState != animatorManager.characterState && (actualTime - timeLastChange) > 0.5)
+        if (previousPlayerState != animatorManager.characterState && (actualTime - timeLastChange) > 0.5f)
         {
             if (animatorManager.characterState == AnimationCharacterManager.CharacterStateEnum.Punching ||
                 animatorManager.characterState == AnimationCharacterManager.CharacterStateEnum.Kicking)
